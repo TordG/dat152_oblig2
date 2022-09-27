@@ -24,7 +24,7 @@ public class StoreFront {
 		currencies.put("EUR", 0.097);
 		
 		
-		return currencies.get(currency) * amount;
+		return Math.ceil(currencies.get(currency) * amount) -0.01   ;
 		
 	}
 
@@ -33,9 +33,9 @@ public class StoreFront {
 		
 		
 		
-		Locale locale = new Locale("no");
-         //Locale locale = new Locale("de");
-       // Locale locale = new Locale("en", "US");
+//		Locale locale = new Locale("no");
+//         Locale locale = new Locale("de");
+        Locale locale = new Locale("en", "US");
 		 ResourceBundle apptexts = ResourceBundle.getBundle("resources/apptexts", locale);
 		
 		System.out.println(apptexts.getString("greeting")); //Hello welcome
