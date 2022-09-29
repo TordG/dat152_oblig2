@@ -8,19 +8,19 @@ public class Cup {
 
 	private String desc;
 	private String url;
-	private String color;
+	private String name;
 
 	private double price;
 
-	public Cup(String desc, String url, String color, double price) {
+	public Cup(String desc, String url, String name, double price) {
 		this.desc = desc;
 		this.url = url;
-		this.color = color;
+		this.name = name;
 		this.price = price;
 	}
 
-	public String getColor() {
-		return color;
+	public String getName() {
+		return name;
 	}
 
 	public double getPrice() {
@@ -31,9 +31,13 @@ public class Cup {
 		return url;
 	}
 
+	public String getDesc() {
+		return desc;
+	}
+
 	@Override
 	public String toString() {
-		return "Cup [color=" + color + ", price=" + price + "]";
+		return "Cup [name=" + name + ", price=" + price + "]";
 	}
 
 }
