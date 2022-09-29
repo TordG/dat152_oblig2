@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Index</title>
+<title>Cart</title>
 </head>
 
 <body>
@@ -17,7 +17,7 @@
 			<fmt:message key="greeting" />
 		</h3>
 		
-		<a href="products"><fmt:message key="goToStore" /></a>
+		
 
 	</fmt:bundle>
 

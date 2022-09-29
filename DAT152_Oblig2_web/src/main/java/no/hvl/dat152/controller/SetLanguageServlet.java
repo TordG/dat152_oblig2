@@ -23,19 +23,19 @@ public class SetLanguageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	System.out.println("HEI!!!!");
-//        String locale = request.getParameter("locale");
-//        if (locale != null) {
-//            Config.set(request.getSession(), Config.FMT_LOCALE, locale);
-//
-//            Cookie localeCookie = new Cookie("locale", locale);
-//            localeCookie.setMaxAge(365 * 24 * 60 * 60); // One year in seconds
-//            response.addCookie(localeCookie);
-//            // Cookie with locale sent to client
-//        }
-//
-//        String referrer = request.getHeader("referer");
-//        response.sendRedirect(referrer);
+    	
+        String locale = request.getParameter("locale");
+        if (locale != null) {
+            Config.set(request.getSession(), Config.FMT_LOCALE, locale);
+
+            Cookie localeCookie = new Cookie("locale", locale);
+            localeCookie.setMaxAge(365 * 24 * 60 * 60); // One year in seconds
+            response.addCookie(localeCookie);
+            // Cookie with locale sent to client
+        }
+
+        String referrer = request.getHeader("referer");
+        response.sendRedirect(referrer);
     }
 
     @Override
