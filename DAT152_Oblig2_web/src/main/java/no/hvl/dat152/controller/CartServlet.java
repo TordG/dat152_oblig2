@@ -6,7 +6,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.jsp.jstl.core.Config;
 import no.hvl.dat152.db.LanguageDAO;
+import no.hvl.dat152.db.WebStoreDAO;
+import no.hvl.dat152.model.Cart;
+import no.hvl.dat152.util.Util;
 
 
 @WebServlet(name = "CartServlet", urlPatterns = "/cart")
@@ -14,12 +18,25 @@ public class CartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String locale = (String) Config.get(request.getSession(), Config.FMT_LOCALE); 
 		
 		LanguageDAO languageDAO = new LanguageDAO();
 		request.setAttribute("supportedLanguages", languageDAO.getSupportedLanguages());
 		
+		WebStoreDAO productDAO = new WebStoreDAO();
 		
+		Cart cart = new Cart();
 		
+		Util.convertAllProducts(productDAO.getAllProducts(), productDAO.getAllDescriptions(), locale)
+			.forEach(item -> cart.addItem(item));
+		
+		cart.addItem(Util.convertAllProducts(productDAO.getAllProducts(), productDAO.getAllDescriptions(), locale).get(0));
+		
+		cart.getAllItems().forEach(System.out::println);
+		System.out.println("-----");
+		cart.getIndividualItems().forEach(System.out::println);
+		
+		request.setAttribute("cart", cart);
 		
 		getServletContext().getRequestDispatcher("/cart.jsp").forward(request, response);
 		

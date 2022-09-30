@@ -21,10 +21,11 @@
 		<c:forEach items="${products}" var="product">
 
 				 <img src="${product.getImageFile()}"/>
-				 <c:out value="${product.getName()}" />
-				 <c:out value="${product.getPrice()}" />
-				 <c:out value="${product.getDescription()}" />
-				 
+				  <p> 
+				  	 <c:out value="${product.getName()}" />
+					 <c:out value="${product.getPrice()}" /> <fmt:message key="currencySymbol"/> 
+					 <c:out value="${product.getDescription()}" />
+				 </p>
 				 <br>
 
 		</c:forEach>

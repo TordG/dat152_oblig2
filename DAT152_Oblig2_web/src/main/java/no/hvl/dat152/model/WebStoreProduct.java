@@ -1,5 +1,7 @@
 package no.hvl.dat152.model;
 
+import java.util.Objects;
+
 public class WebStoreProduct {
 	
 	private String name;
@@ -29,6 +31,33 @@ public class WebStoreProduct {
 	public String getImageFile() {
 		return imageFile;
 	}
+
+	@Override
+	public String toString() {
+		return "WebStoreProduct [name=" + name + ", price=" + price + ", description=" + description + ", imageFile="
+				+ imageFile + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		WebStoreProduct other = (WebStoreProduct) obj;
+		return Objects.equals(name, other.name);
+	}
+	
+	
+	
+	
 	
 	
 	

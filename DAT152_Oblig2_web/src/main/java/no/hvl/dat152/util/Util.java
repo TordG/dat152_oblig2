@@ -24,11 +24,13 @@ public class Util {
 			String price = "";
 			
 			switch (langCode) {
-				case "en_US" : price = currencyConverter("USD", product.getPriceInEuro()) + "$";
+				case "en_US" : price = currencyConverter("USD", product.getPriceInEuro());
 				break;
-				case "no_NO" : price = currencyConverter("NOK", product.getPriceInEuro()) + "kr";
+				case "no_NO" : price = currencyConverter("NOK", product.getPriceInEuro());
 				break;
-				default: price = currencyConverter("EUR", product.getPriceInEuro()) + "€"; 
+				case "de_DE" : price = currencyConverter("EUR", product.getPriceInEuro());
+				break;
+				default: price = currencyConverter("EUR", product.getPriceInEuro()); 
 			}
 			
 			String description = getDescriptionText(descriptions, product.getPno(), langCode);

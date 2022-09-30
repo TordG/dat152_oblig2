@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -6,6 +7,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Cart</title>
+
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+
 </head>
 
 <body>
@@ -26,13 +35,39 @@
 		   	<th><fmt:message key="total"/></th>
 		    
 		  </tr>
-		  <tr>
-		    <td>Alfreds Futterkiste</td>
-		    <td>Maria Anders</td>
-		    <td>Germany</td>
-		    <td>Maria Anders</td>
-		    <td>Germany</td>
-		  </tr>
+		  
+		  <c:forEach items="${cart.getIndividualItems()}" var="item">
+				 
+				 <tr>
+				    <td>
+				    	<c:out value="${item.getName()}"/>
+				    	
+				    </td>
+				    
+				    <td>
+				    	<c:out value="${item.getDescription()}"/>
+				    </td>
+				    
+				    <td>
+				    	<c:out value="${item.getPrice()}"/>
+				    </td>
+				    
+				    <td>
+				    	<c:out value="${cart.getAmount(item)}"/>
+				    </td>
+				    <td>
+				    	<c:out value="${cart.getItemTotal(item)}"/>
+				    </td>
+		  		</tr>
+
+		</c:forEach>
+		
+			<tr>
+		     	<td colspan="4" style="text-align: right"><fmt:message key="totalAmount"/></td>
+			    <td>${cart.getTotal()} <fmt:message key="currencySymbol"/></td>
+		  	</tr>
+		
+		  
 		</table>
 		
 		
