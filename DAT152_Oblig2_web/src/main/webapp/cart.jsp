@@ -14,9 +14,35 @@
 	<fmt:bundle basename="no.hvl.dat152.resources.apptexts">
  
 		<h3>
-			<fmt:message key="greeting" />
+			<fmt:message key="cart" />
 		</h3>
 		
+		<table>
+		  <tr>
+		    <th><fmt:message key="name"/></th>
+		    <th><fmt:message key="shortDesc"/></th>
+		    <th><fmt:message key="price"/></th>
+		   	<th><fmt:message key="quantity"/></th>
+		   	<th><fmt:message key="total"/></th>
+		    
+		  </tr>
+		  <tr>
+		    <td>Alfreds Futterkiste</td>
+		    <td>Maria Anders</td>
+		    <td>Germany</td>
+		    <td>Maria Anders</td>
+		    <td>Germany</td>
+		  </tr>
+		</table>
+		
+		
+		<a href="index">
+			<fmt:message key="index"/>
+		</a> 
+		
+		<a href="cart">
+			<fmt:message key="products" />
+		</a> 
 		
 
 	</fmt:bundle>

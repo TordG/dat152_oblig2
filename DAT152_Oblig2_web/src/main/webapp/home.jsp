@@ -17,7 +17,7 @@
 			<fmt:message key="greeting" />
 		</h3>
 		
-		<a href="products"><fmt:message key="goToStore" /></a>
+		<p><fmt:message key="goToStore" /> <a href="products"><fmt:message key="products" /></a><p>
 
 	</fmt:bundle>
 

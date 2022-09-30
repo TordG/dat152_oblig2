@@ -25,8 +25,10 @@ public class Util {
 			
 			switch (langCode) {
 				case "en_US" : price = currencyConverter("USD", product.getPriceInEuro()) + "$";
+				break;
 				case "no_NO" : price = currencyConverter("NOK", product.getPriceInEuro()) + "kr";
-				default: price = product.getPriceInEuro() + "€"; 
+				break;
+				default: price = currencyConverter("EUR", product.getPriceInEuro()) + "€"; 
 			}
 			
 			String description = getDescriptionText(descriptions, product.getPno(), langCode);
@@ -49,14 +51,14 @@ public class Util {
 			.get(0);
 	}
 	
-	private static double currencyConverter(String currency, double amount) {
+	private static String currencyConverter(String currency, double amount) {
 		HashMap<String, Double> currencies = new HashMap<String, Double>();
 		currencies.put("NOK", 10.46);
 		currencies.put("USD", 0.98);
 		currencies.put("EUR", 1.00);
 		
 		
-		return Math.ceil(currencies.get(currency) * amount) -0.01   ;
+		return String.format("%.2f", (currencies.get(currency) * amount));
 		
 	}
 }

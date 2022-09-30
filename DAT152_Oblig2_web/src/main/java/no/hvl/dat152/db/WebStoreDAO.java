@@ -7,12 +7,12 @@ import java.util.stream.Collectors;
 import no.hvl.dat152.db.model.Description;
 import no.hvl.dat152.db.model.Product;
 
-public class ProductDAO {
+public class WebStoreDAO {
 	
 	private List<Product> products = new ArrayList<Product>();
 	private List<Description> descriptions = new ArrayList<Description>();
 	
-	public ProductDAO() {
+	public WebStoreDAO() {
 		Product whiteCup = new Product(0, "White Coffee Cup™", 6.50, "images/whitecup.png");
 		Product blackCup = new Product(1, "Black Coffee Cup™", 4.75, "images/blackcup.png");
 		

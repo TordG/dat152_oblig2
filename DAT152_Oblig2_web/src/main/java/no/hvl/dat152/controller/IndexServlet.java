@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.jsp.jstl.core.Config;
+import no.hvl.dat152.db.LanguageDAO;
 
 @WebServlet(name = "IndexServlet", urlPatterns = "/index")
 public class IndexServlet extends HttpServlet {
@@ -19,6 +20,8 @@ public class IndexServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		LanguageDAO languageDAO = new LanguageDAO();
+		request.setAttribute("supportedLanguages", languageDAO.getSupportedLanguages());
 		
 		Cookie[] cookies = request.getCookies();
         if (cookies != null) {

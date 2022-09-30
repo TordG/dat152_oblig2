@@ -28,6 +28,14 @@
 				 <br>
 
 		</c:forEach>
+		
+		<a href="index">
+			<fmt:message key="index"/>
+		</a> 
+		
+		<a href="cart">
+			<fmt:message key="cart" />
+		</a> 
 
 	</fmt:bundle>
 
