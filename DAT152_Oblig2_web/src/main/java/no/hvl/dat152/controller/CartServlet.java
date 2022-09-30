@@ -21,7 +21,9 @@ public class CartServlet extends HttpServlet {
 		String locale = (String) Config.get(request.getSession(), Config.FMT_LOCALE); 
 		WebStoreDAO productDAO = new WebStoreDAO();
 		
+		// Convert descriptions and prices
 		Cart.staticItems = Util.convertDescription(Cart.staticItems, productDAO.getAllDescriptions(), locale);
+		Cart.staticItems = Util.convertPrice(Cart.staticItems, locale);
 		
 		LanguageDAO languageDAO = new LanguageDAO();
 		request.setAttribute("supportedLanguages", languageDAO.getSupportedLanguages());

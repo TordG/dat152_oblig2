@@ -15,6 +15,8 @@ public class Util {
 		// Util class cannot be instantiated
 	}
 	
+	private static String lastCurrency = "";
+	
 	public static List<WebStoreProduct> convertDescription(List<WebStoreProduct> products, List<Description> descriptions, String langCode) {
 		
 		products.forEach(product -> {
@@ -22,6 +24,40 @@ public class Util {
 		});
 		
 		return products;
+	}
+	
+	public static List<WebStoreProduct> convertPrice(List<WebStoreProduct> products, String langCode) {
+		
+			
+			String currency = "";
+			switch (langCode) {
+				case "en_US" : currency = "USD"; 
+				break;
+				case "no_NO" : currency = "NOK"; 
+				break;
+				case "de_DE" : currency = "EUR"; 
+				break;
+				default: currency = "EUR"; 
+			}
+			
+			if(currency.equals(lastCurrency)) {
+				return products;
+			}
+			
+			lastCurrency = currency;
+			
+			final String fcurrency = currency;
+		if(currency.equals("EUR")) {
+			products.forEach(product -> {
+				product.setPrice(product.getEuroPrice() + "");
+			});
+		} else {
+			products.forEach(product -> {
+				product.setPrice(currencyConverter(fcurrency, Double.parseDouble(product.getPrice())));
+			});
+		}	
+		return products;
+			
 	}
 	
 	public static List<WebStoreProduct> convertAllProducts(List<Product> products, List<Description> descriptions, String langCode) {
@@ -32,6 +68,7 @@ public class Util {
 			String name = product.getpName();
 			
 			String price = "";
+			Double euroPrice = product.getPriceInEuro();
 			
 			switch (langCode) {
 				case "en_US" : price = currencyConverter("USD", product.getPriceInEuro());
@@ -46,7 +83,7 @@ public class Util {
 			String description = getDescriptionText(descriptions, product.getPno(), langCode);
 			String imageFile = product.getImageFile();
 			
-			WebStoreProduct wsp = new WebStoreProduct(id, name, price, description, imageFile);
+			WebStoreProduct wsp = new WebStoreProduct(id, name, price, description, imageFile, euroPrice);
 			
 			webStoreProducts.add(wsp);
 		});

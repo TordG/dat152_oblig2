@@ -46,20 +46,18 @@ table, th, td {
 				    </td>
 				    
 				    <td>
-					   <dat152:shorttext maxchars="10"> 	
-					   		<c:out value="${item.getDescription()}"/>
-					   </dat152:shorttext>
+					   <dat152:shorttext maxchars="10"><c:out value="${item.getDescription()}"/></dat152:shorttext>
 				    </td>
 				    
 				    <td>
-				    	<c:out value="${item.getPrice()}"/>
+				    	<c:out value="${item.getPrice()}"/> <fmt:message key="currencySymbol"/>
 				    </td>
 				    
 				    <td>
 				    	<c:out value="${cart.getAmount(item)}"/>
 				    </td>
 				    <td>
-				    	<c:out value="${cart.getItemTotal(item)}"/>
+				    	<c:out value="${cart.getItemTotal(item)}"/> <fmt:message key="currencySymbol"/>
 				    </td>
 		  		</tr>
 
@@ -86,6 +84,9 @@ table, th, td {
 		
 
 	</fmt:bundle>
+	
+	<p><jsp:include page="copyright.jsp" /></p>
+	
 
 </body>
 </html>

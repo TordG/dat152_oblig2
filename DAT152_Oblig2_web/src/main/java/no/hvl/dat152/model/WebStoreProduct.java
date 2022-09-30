@@ -9,23 +9,33 @@ public class WebStoreProduct {
 	private String price;
 	private String description;
 	private String imageFile;
+	private final double euroPrice;
 	
-	public WebStoreProduct(int id, String name, String price, String description, String imageFile) {
+	public WebStoreProduct(int id, String name, String price, String description, String imageFile, Double euroPrice) {
 		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.description = description;
 		this.imageFile = imageFile;
+		this.euroPrice = euroPrice;
 	}
 
 	public String getName() {
 		return name;
+	}
+	
+	public double getEuroPrice() {
+		return euroPrice;
 	}
 
 	public String getPrice() {
 		return price;
 	}
 
+	public void setPrice(String blablabla) {
+		this.price = blablabla;
+	}
+	
 	public String getDescription() {
 		return description;
 	}

@@ -44,6 +44,8 @@
 		</a> 
 
 	</fmt:bundle>
+	
+	<p><jsp:include page="copyright.jsp" /></p>
 
 </body>
 </html>
