@@ -7,11 +7,13 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Cart {
+	
+	public static List<WebStoreProduct> staticItems = new ArrayList<WebStoreProduct>();
 
 	private List<WebStoreProduct> products;
 
 	public Cart() {
-		this.products = new ArrayList<WebStoreProduct>();
+		this.products = staticItems;
 	}
 	
 	public void addItem(WebStoreProduct item) {

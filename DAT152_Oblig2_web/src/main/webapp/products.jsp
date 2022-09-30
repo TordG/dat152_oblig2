@@ -26,6 +26,11 @@
 					 <c:out value="${product.getPrice()}" /> <fmt:message key="currencySymbol"/> 
 					 <c:out value="${product.getDescription()}" />
 				 </p>
+				 
+				 <form action="products" method="post">
+					 <input name="itemid" id="itemid" type="hidden" value="${product.getId()}" >
+					 <input type="submit" value="<fmt:message key="button"/>" >
+				 </form>
 				 <br>
 
 		</c:forEach>

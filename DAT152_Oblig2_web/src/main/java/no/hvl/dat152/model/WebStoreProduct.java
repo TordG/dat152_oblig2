@@ -4,12 +4,14 @@ import java.util.Objects;
 
 public class WebStoreProduct {
 	
+	private int id;
 	private String name;
 	private String price;
 	private String description;
 	private String imageFile;
 	
-	public WebStoreProduct(String name, String price, String description, String imageFile) {
+	public WebStoreProduct(int id, String name, String price, String description, String imageFile) {
+		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.description = description;
@@ -28,8 +30,16 @@ public class WebStoreProduct {
 		return description;
 	}
 	
+	public void setDescription(String blablabla) {
+		this.description = blablabla;
+	}
+	
 	public String getImageFile() {
 		return imageFile;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	@Override
@@ -40,7 +50,7 @@ public class WebStoreProduct {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(name);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -52,7 +62,7 @@ public class WebStoreProduct {
 		if (getClass() != obj.getClass())
 			return false;
 		WebStoreProduct other = (WebStoreProduct) obj;
-		return Objects.equals(name, other.name);
+		return Objects.equals(id, other.id);
 	}
 	
 	

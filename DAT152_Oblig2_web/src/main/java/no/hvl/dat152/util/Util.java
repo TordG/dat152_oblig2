@@ -15,10 +15,20 @@ public class Util {
 		// Util class cannot be instantiated
 	}
 	
+	public static List<WebStoreProduct> convertDescription(List<WebStoreProduct> products, List<Description> descriptions, String langCode) {
+		
+		products.forEach(product -> {
+			product.setDescription(getDescriptionText(descriptions, product.getId(), langCode));
+		});
+		
+		return products;
+	}
+	
 	public static List<WebStoreProduct> convertAllProducts(List<Product> products, List<Description> descriptions, String langCode) {
 		List<WebStoreProduct> webStoreProducts = new ArrayList<WebStoreProduct>();
 		
 		products.forEach(product -> {
+			int id = product.getPno();
 			String name = product.getpName();
 			
 			String price = "";
@@ -36,7 +46,7 @@ public class Util {
 			String description = getDescriptionText(descriptions, product.getPno(), langCode);
 			String imageFile = product.getImageFile();
 			
-			WebStoreProduct wsp = new WebStoreProduct(name, price, description, imageFile);
+			WebStoreProduct wsp = new WebStoreProduct(id, name, price, description, imageFile);
 			
 			webStoreProducts.add(wsp);
 		});

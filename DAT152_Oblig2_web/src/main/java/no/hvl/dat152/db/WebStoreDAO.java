@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 import no.hvl.dat152.db.model.Description;
 import no.hvl.dat152.db.model.Product;
+import no.hvl.dat152.model.WebStoreProduct;
+import no.hvl.dat152.util.Util;
 
 public class WebStoreDAO {
 	
@@ -33,6 +35,11 @@ public class WebStoreDAO {
 		descriptions.add(englishBlackCupDescription);
 		descriptions.add(norwegianBlackCupDescription);
 		descriptions.add(germanBlackCupDescription);
+	}
+	
+	public WebStoreProduct find(int id, String langCode) {
+		return Util.convertAllProducts(products.stream().filter(p -> p.getPno() == id).collect(Collectors.toList()), descriptions, langCode).get(0);
+		
 	}
 
 	public List<Product> getAllProducts() {

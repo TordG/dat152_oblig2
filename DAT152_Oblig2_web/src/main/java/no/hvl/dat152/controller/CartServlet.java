@@ -19,22 +19,14 @@ public class CartServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String locale = (String) Config.get(request.getSession(), Config.FMT_LOCALE); 
+		WebStoreDAO productDAO = new WebStoreDAO();
+		
+		Cart.staticItems = Util.convertDescription(Cart.staticItems, productDAO.getAllDescriptions(), locale);
 		
 		LanguageDAO languageDAO = new LanguageDAO();
 		request.setAttribute("supportedLanguages", languageDAO.getSupportedLanguages());
 		
-		WebStoreDAO productDAO = new WebStoreDAO();
-		
 		Cart cart = new Cart();
-		
-		Util.convertAllProducts(productDAO.getAllProducts(), productDAO.getAllDescriptions(), locale)
-			.forEach(item -> cart.addItem(item));
-		
-		cart.addItem(Util.convertAllProducts(productDAO.getAllProducts(), productDAO.getAllDescriptions(), locale).get(0));
-		
-		cart.getAllItems().forEach(System.out::println);
-		System.out.println("-----");
-		cart.getIndividualItems().forEach(System.out::println);
 		
 		request.setAttribute("cart", cart);
 		
