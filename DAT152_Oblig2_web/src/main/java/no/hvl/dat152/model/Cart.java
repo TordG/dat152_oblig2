@@ -3,22 +3,24 @@ package no.hvl.dat152.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import no.hvl.dat152.db.model.Product;
+
 public class Cart {
 	
-	private List<Cup> cups;
+	private List<Product> products;
 
 	public Cart() {
-		this.cups = new ArrayList<Cup>();
+		this.products = new ArrayList<Product>();
 	}
 	
-	public void addCup(Cup cup) {
-		cups.add(cup);
+	public void addProduct(Product product) {
+		products.add(product);
 	}
-	public void removeCup(Cup cup) {
-		cups.remove(cup);
+	public void removeProduct(Product product) {
+		products.remove(product);
 	}
-	public List<Cup> getAll() {
-		return cups;
+	public List<Product> getAll() {
+		return products;
 	}
 	
 	
