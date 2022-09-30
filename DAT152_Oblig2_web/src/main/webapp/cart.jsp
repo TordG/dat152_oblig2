@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="/WEB-INF/tlds/dat152.tld" prefix="dat152"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -45,7 +46,9 @@ table, th, td {
 				    </td>
 				    
 				    <td>
-				    	<c:out value="${item.getDescription()}"/>
+					   <dat152:shorttext maxchars="10"> 	
+					   		<c:out value="${item.getDescription()}"/>
+					   </dat152:shorttext>
 				    </td>
 				    
 				    <td>
@@ -62,6 +65,8 @@ table, th, td {
 
 		</c:forEach>
 		
+		
+		
 			<tr>
 		     	<td colspan="4" style="text-align: right"><fmt:message key="totalAmount"/></td>
 			    <td>${cart.getTotal()} <fmt:message key="currencySymbol"/></td>
@@ -75,7 +80,7 @@ table, th, td {
 			<fmt:message key="index"/>
 		</a> 
 		
-		<a href="cart">
+		<a href="products">
 			<fmt:message key="products" />
 		</a> 
 		
