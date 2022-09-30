@@ -20,6 +20,8 @@
 		<p><fmt:message key="goToStore" /> <a href="products"><fmt:message key="products" /></a><p>
 
 	</fmt:bundle>
+	
+	<p><jsp:include page="copyright.jsp" /></p>
 
 </body>
 </html>
